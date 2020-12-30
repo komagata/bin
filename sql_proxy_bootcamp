@@ -1,0 +1,3 @@
+#!/bin/sh
+
+cloud_sql_proxy -instances=bootcamp-224405:asia-northeast1:bootcamp=tcp:5433
