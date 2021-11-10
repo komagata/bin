@@ -1,0 +1,10 @@
+#!/bin/bash
+
+APP_NAME=$1
+WIDTH=$2
+HEIGHT=$3
+
+osascript \
+-e "tell application \"$APP_NAME\"" \
+-e "set bounds of front window to {1, 1, $WIDTH, $HEIGHT}" \
+-e "end tell"
