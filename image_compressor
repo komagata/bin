@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+
+require_relative 'my_compressor'
+
+include MyCompressor
+
+dir = ARGV[0]
+
+Dir.entries(dir).each do |name|
+  unless name =~ /^\./
+    compress "#{dir}/#{name}"
+  end
+end

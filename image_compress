@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+dir = ARGV[0]
+
+Dir.entries(dir).each do |name|
+  unless name =~ /^\./
+    path = "#{dir}/#{name}"
+    system "convert '#{path}' -resize 50% -quality 90 '#{path}'"
+  end
+end
