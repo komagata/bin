@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+def resize(path)
+  system "convert '#{path}' -resize 800x800^ -quality 90 '#{path}'"
+end
+
+dir = ARGV[0]
+
+Dir.entries(dir).each do |name|
+  unless name =~ /^\./
+    path = "#{dir}/#{name}"
+    resize(path)
+  end
+end
