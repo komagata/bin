@@ -1,14 +1,9 @@
 #!/usr/bin/env ruby
 
-def resize(path)
-  system "convert '#{path}' -resize 800x800^ -quality 90 '#{path}'"
-end
-
 dir = ARGV[0]
 
-Dir.entries(dir).each do |name|
-  unless name =~ /^\./
-    path = "#{dir}/#{name}"
-    resize(path)
-  end
+Dir.chdir(dir) do
+  system "mogrify -format jpg *.HEIC"
+  system "rm -f *.HEIC"
+  system "mogrify -path '#{dir}' -resize 1920x1920 -quality 90 -auto-level -normalize '#{dir}/*'"
 end
